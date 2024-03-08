@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Camping</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h1>Update Camping</h1>
+            <form action="#"
+                  th:action="@{/campings/update/{id}(id=${camping.id})}"
+                  th:object="${camping}"
+                  method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" th:field="*{name}" class="form-control" id="name">
+                    <label for="stars">Sterren:</label>
+                    <input type="text" th:field="*{stars}" class="form-control" id="stars">
+                    <label for="price">Prijs:</label>
+                    <input type="text" th:field="*{price}" class="form-control" id="price">
+                    <label for="description">Omschrijving:</label>
+                    <textarea class="form-control" th:field="*{description}" id="description" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+            <br>
+            <div class="row">
+                <form th:action="@{/campings/delete/{id}(id=${camping.id})}" th:object="${camping}" method="post">
+                    <!-- Hidden field to simulate DELETE request -->
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <input type="submit" class="btn fa-input" value="&#xf1f8;">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

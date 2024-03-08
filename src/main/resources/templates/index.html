@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welkom</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Praegus Travels</h1>
+            <p class="lead text-muted">We verzekeren een zorgeloze vakantie-ervaring, zodat uw reisdromen werkelijkheid
+                kunnen worden. <br/>Met andere woorden: Wij creëren zorgeloze reizen.</p>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div th:each="camping: ${campings}" class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <!-- Use Thymeleaf to dynamically change the image source and alt text -->
+                        <img class="card-img-top" th:src="@{'https://picsum.photos/320/240?random=' + ${camping.id}}"
+                             th:alt="${camping.name}"/>
+                        <div class="card-body">
+                            <!-- Use Thymeleaf to dynamically set the title and subtitle -->
+                            <h5 class="card-title" th:text="${camping.name}">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${'€ ' + camping.price}"> per nacht.</h6>
+                            <span th:if="${camping.stars > 0}"
+                                  th:each="i : ${#numbers.sequence(1, camping.stars)}"
+                                  class="fa fa-star checked"></span>
+                            <p class="card-text" th:text="${camping.description}">...</p>
+                            <!-- Dynamic link for booking -->
+                            <a th:href="@{/campings/{id}(id=${camping.id})}" class="btn btn-primary">Boek nu</a>
+                            <a th:href="@{/campings/edit/{id}(id=${camping.id})}" class="btn btn-link">Bewerk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

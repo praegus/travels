@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alle Campings</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <h1>Alle Campings Tabel</h1>
+            <table id="myTable" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Sterren</th>
+                    <th>Prijs</th>
+                    <th>Omschrijving</th>
+                    <th>Bewerk</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="camping : ${campings}">
+                    <td>
+                        <p th:text=${camping.name}></p>
+                    </td>
+                    <td>
+                        <p th:text=${camping.stars}></p>
+                    </td>
+                    <td>
+                        <p th:text=${camping.price}></p>
+                    </td>
+                    <td>
+                        <p th:text=${camping.description}></p>
+                    </td>
+                    <td>
+                        <p><a th:href="@{/campings/edit/{id}(id=${camping.id})}" class="btn btn-primary">Bewerk</a></p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https:////cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $('#myTable').DataTable( {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/nl-NL.json'
+    }
+});
+
+</script>
+</body>
+</html>
