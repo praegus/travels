@@ -1,7 +1,5 @@
 package com.praegus.travels.model;
 
-//import jakarta.persistence.*;
-
 import javax.persistence.*;
 
 @Entity
