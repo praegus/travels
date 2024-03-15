@@ -70,6 +70,4 @@ public class Camping {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    // Optionally, override toString, equals, and hashCode methods
 }
