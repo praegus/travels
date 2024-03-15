@@ -7,7 +7,6 @@ on:
 
 jobs:
   update-version:
-    needs: [maven-release, github-release]
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
@@ -29,6 +28,7 @@ jobs:
           git push origin master
   
   maven-release:
+    needs: [ update-version ]
     runs-on: ubuntu-20.04
     steps:
       - name: Check out Git repository
