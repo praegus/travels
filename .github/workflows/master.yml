@@ -6,6 +6,28 @@ on:
       - 'main'
 
 jobs:
+  update-version:
+    needs: [maven-release, github-release]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Java and Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
+      - name: Configure git
+        run: |
+          git config --global user.email "jens.don@praegus.nl"
+          git config --global user.name "Praegus"
+      - name: Update version
+        run: |
+          mvn -B release:update-versions -DautoVersionSubmodules=true
+          git add pom.xml
+          git commit -m "Update version"
+          git push origin master
+  
   maven-release:
     runs-on: ubuntu-20.04
     steps:
@@ -53,24 +75,3 @@ jobs:
           body:
           draft: false
           prerelease: false
-  update-version:
-    needs: [maven-release, github-release]
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
-        with:
-          distribution: temurin
-          java-version: 11
-      - name: Configure git
-        run: |
-          git config --global user.email "jens.don@praegus.nl"
-          git config --global user.name "Praegus"
-      - name: Update version
-        run: |
-          mvn -B release:update-versions -DautoVersionSubmodules=true
-          git add pom.xml
-          git commit -m "Update version"
-          git push origin master
