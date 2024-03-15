@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CampingRepository extends JpaRepository<Camping, Long> {
-    // You can add custom query methods here if needed
 }
