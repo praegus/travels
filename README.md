@@ -1,5 +1,7 @@
 # Praegus Travels
 
+[![Maven Central](https://img.shields.io/maven-central/v/nl.praegus/travels-app.svg?maxAge=21600)](https://mvnrepository.com/artifact/nl.praegus/travels-app)
+
 [<img src="travels.png" width="500"/>](travels.png)
 
 Dit is een demo applicatie geschikt voor trainingsdoeleinden.
@@ -10,9 +12,7 @@ Om Praegus Travels te installeren heb je een Java JRE nodig. Deze kun je [hier](
 
 ## Hoe start ik Praegus Travels?
 
-Download de jar uit Maven Central:
-
-[![Maven Central](https://img.shields.io/maven-central/v/nl.praegus/travels-app.svg?maxAge=21600)](https://mvnrepository.com/artifact/nl.praegus/travels-app)
+Download de meest recente jar uit Maven Central of gebruik [deze](https://repo1.maven.org/maven2/nl/praegus/travels-app/0.0.3/travels-app-0.0.3.jar) link.
 
 En start de applicatie vanaf de commandline:
 
