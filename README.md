@@ -1,6 +1,8 @@
 # Praegus Travels
 
-Dit is een demo applicatie geschikt voor trainingsdoeleinden. 
+[<img src="travels.png" width="500"/>](travels.png)
+
+Dit is een demo applicatie geschikt voor trainingsdoeleinden.
 
 ## Wat heb je nodig?
 
@@ -14,4 +16,6 @@ Download de jar uit Maven Central:
 
 En start de applicatie vanaf de commandline:
 
-`java -jar travels-app-0.0.3.jar`
+`java -jar travels-app-<versie>.jar`
+
+Ga nu in je browser naar
