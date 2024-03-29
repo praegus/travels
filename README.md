@@ -18,4 +18,4 @@ En start de applicatie vanaf de commandline:
 
 `java -jar travels-app-<versie>.jar`
 
-Ga nu in je browser naar
+Ga nu in je browser naar [http://localhost:1234](http://localhost:1234)
