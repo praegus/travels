@@ -23,3 +23,12 @@ Dit is een demo applicatie geschikt voor trainingsdoeleinden.
 | Gebruikersnaam | Wachtwoord |
 | :------------: | :--------: |
 |     admin      |   admin    |
+
+## Cypress
+
+1. [Download](https://download.cypress.io/desktop) Cypress en pak de zip uit
+2. Start Cypress
+3. Kies een folder voor je project
+4. Maak de keuze voor e2e testing en kies voor continue. Cypress maakt wat nu automatisch wat bestanden aan in je project folder.
+5. Kies daarna voor Google Chrome als browser
+6. Maak een nieuwe spec en run het voorbeeld met https://example.cypress.io/
