@@ -3,19 +3,25 @@ package com.praegus.travels.controller;
 import com.github.javafaker.Faker;
 import com.praegus.travels.model.Camping;
 import com.praegus.travels.service.CampingService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Locale;
 
-@RestController
+@Controller
 @RequestMapping("/settings")
-public class SettingsController {
+public class SettingsThymeleafController {
 
     private final CampingService campingService;
 
-    public SettingsController(CampingService campingService) {
+    @Autowired
+    public SettingsThymeleafController(CampingService campingService) {
         this.campingService = campingService;
     }
 
@@ -25,7 +31,7 @@ public class SettingsController {
     }
 
     @PostMapping("/generate")
-    public ModelAndView generate(@RequestParam("amount") int amount) {
+    public ModelAndView generateCampings(@RequestParam("amount") int amount) {
 
         Faker faker = new Faker(new Locale("nl-NL"));
 
@@ -38,6 +44,6 @@ public class SettingsController {
             campingService.saveCamping(camping);
         }
 
-        return new ModelAndView("index");
+        return new ModelAndView("redirect:/");
     }
 }

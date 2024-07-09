@@ -4,86 +4,79 @@ import com.praegus.travels.model.Camping;
 import com.praegus.travels.service.CampingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/campings")
-public class CampingController {
+public class CampingThymeleafController {
 
     private final CampingService campingService;
 
     @Autowired
-    public CampingController(CampingService campingService) {
+    public CampingThymeleafController(CampingService campingService) {
         this.campingService = campingService;
     }
 
-
     @GetMapping("/all")
-    public ModelAndView getAllCampings() {
-        ModelAndView mav = new ModelAndView("list-campings");
-        mav.addObject("campings", campingService.findAllCampings());
-
-        return mav;
+    public String getAllCampings(Model model) {
+        model.addAttribute("campings", campingService.findAllCampings());
+        return "list-campings";
     }
 
     @GetMapping("/edit/{id}")
-    public ModelAndView showUpdateForm(@PathVariable("id") long id) {
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Camping camping = campingService.findCampingById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid camping Id:" + id));
-
-        ModelAndView mav = new ModelAndView("update-camping");
-        mav.addObject("camping", camping);
-
-        return mav;
+        model.addAttribute("camping", camping);
+        return "update-camping";
     }
 
     @GetMapping("/{id}")
-    public ModelAndView showForm(@PathVariable("id") long id) {
+    public String showCampingDetails(@PathVariable("id") long id, Model model) {
         Camping camping = campingService.findCampingById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid camping Id:" + id));
-
-        ModelAndView mav = new ModelAndView("view-camping");
-        mav.addObject("camping", camping);
-
-        return mav;
+        model.addAttribute("camping", camping);
+        return "view-camping";
     }
 
     @GetMapping("/new")
-    public String addCampingForm(@ModelAttribute Camping camping, BindingResult result) {
+    public String addCampingForm(Model model) {
+        model.addAttribute("camping", new Camping());
         return "add-camping";
     }
 
     @PostMapping("/new")
     public String addCamping(@ModelAttribute Camping camping, BindingResult result) {
+        if (result.hasErrors()) {
+            return "add-camping";
+        }
         campingService.saveCamping(camping);
-        return "redirect:/";
+        return "redirect:/campings/all";
     }
 
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") long id, @ModelAttribute Camping camping,
-                             BindingResult result) {
+    public String updateCamping(@PathVariable("id") long id, @ModelAttribute Camping camping, BindingResult result) {
         if (result.hasErrors()) {
             return "update-camping";
         }
-
         camping.setId(id);
         campingService.saveCamping(camping);
-        return "redirect:/";
+        return "redirect:/campings/all";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteCamping(@PathVariable("id") long id) {
         campingService.findCampingById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid camping Id:" + id));
         campingService.deleteCamping(id);
-        return "redirect:/";
+        return "redirect:/campings/all";
     }
 
-    @DeleteMapping("/delete/all")
+    @GetMapping("/delete/all")
     public String deleteAllCampings() {
         campingService.deleteAllCampings();
-        return "redirect:/";
+        return "redirect:/campings/all";
     }
 }

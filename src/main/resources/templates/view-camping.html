@@ -3,132 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Camping</title>
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/styles/style.css}"/>
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<main role="main">
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <h1 th:text="*{camping.name}"></h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page" th:text="*{camping.name}"></li>
-                </ol>
-            </nav>
-            <form action="#"
-                  method="post"
-                  th:action="@{/campings/update/{id}(id=${camping.id})}"
-                  th:object="${camping}">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input class="form-control" id="name" readonly th:field="*{name}" type="text">
-                    <label for="stars">Sterren:</label>
-                    <input class="form-control" id="stars" readonly th:field="*{stars}" type="text">
-                    <label for="price">Prijs:</label>
-                    <input class="form-control" id="price" readonly th:field="*{price}" type="text">
-                    <label for="description">Omschrijving:</label>
-                    <textarea class="form-control" id="description" readonly rows="5"
-                              th:field="*{description}"></textarea>
-                </div>
-            </form>
-            <!-- Button trigger modal -->
-            <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button">
-                Reserveer nu
-            </button>
 
-            <!-- Modal -->
-            <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal"
-                 role="dialog"
-                 tabindex="-1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Plaats reserving</h5>
-                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                <span aria-hidden="true">&times;</span>
+<main role="main" class="album py-5 bg-light">
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page" th:text="*{camping.name}"></li>
+            </ol>
+        </nav>
+
+        <!-- Camping Information -->
+        <div class="row">
+            <div class="col-md-8">
+                <h1 th:text="*{camping.name}"></h1>
+                <form th:action="@{/campings/update/{id}(id=${camping.id})}" th:object="${camping}" method="post">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input id="name" class="form-control" type="text" th:field="*{name}" readonly>
+                        <label for="stars">Sterren:</label>
+                        <input id="stars" class="form-control" type="text" th:field="*{stars}" readonly>
+                        <label for="price">Prijs:</label>
+                        <input id="price" class="form-control" type="text" th:field="*{price}" readonly>
+                        <label for="description">Omschrijving:</label>
+                        <textarea id="description" class="form-control" rows="5" th:field="*{description}" readonly></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Reservation Button -->
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#exampleModal">
+                    Reserveer nu
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal: Reservation -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Plaats reservering</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="validationCustom01">Naam</label>
+                                <input type="text" class="form-control" id="validationCustom01" placeholder="Naam"
+                                       required>
+                                <div class="valid-feedback">Je naam is akkoord.</div>
+                                <div class="invalid-feedback">Vergeet je naam niet!</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="validationCustom02">E-mail</label>
+                                <input type="text" class="form-control" id="validationCustom02" placeholder="E-mail"
+                                       required>
+                                <div class="valid-feedback">Je e-mail klopt.</div>
+                                <div class="invalid-feedback">Vergeet je e-mail niet!</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Aantal Personen</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="button" onclick="submitReservation()">
+                                Reserveer nu
                             </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="needs-validation" novalidate>
-                                <div class="form-group">
-                                    <div>
-                                        <label for="validationCustom01">Naam</label>
-                                        <input type="text" class="form-control" id="validationCustom01"
-                                               placeholder="Naam" required>
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Please choose a username.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div>
-                                        <label for="validationCustom01">E-mail</label>
-                                        <input type="text" class="form-control" id="validationCustom02"
-                                               placeholder="E-mail" required>
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Please choose a username1.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Aantal Personen</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                                </br>
-                                <div class="alert spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                                <button id="myBtn" class="btn btn-primary">Submit form</button>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal: Success Message -->
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Bedankt voor je reservering!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Bedankt voor je reservering! We gaan er mee aan de slag.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
+
 <footer th:replace="fragments/footer :: footer"></footer>
 
+<!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script th:src="@{/scripts/scripts.js}"></script>
 <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
+    // Form submission handling
+    function submitReservation() {
+        var form = document.querySelector('.needs-validation');
         if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
+            form.classList.add('was-validated');
+        } else {
+            $('#exampleModal').modal('hide');
+            $('#successModal').modal('show');
         }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-
+    }
 </script>
-
 </body>
 </html>
