@@ -13,7 +13,7 @@ Dit is een demo applicatie geschikt voor trainingsdoeleinden.
 3. Download [hier](https://repo1.maven.org/maven2/nl/praegus/travels-app/0.0.3/travels-app-0.0.3.jar) de laatste versie van Praegus Travels
 4. Plaats het jar bestand in je project folder:
 
-[<img src="travels.png" width="100"/>](project.png)
+[<img src="project.png" width="100"/>](project.png)
 
 ## Hoe start ik Praegus Travels?
 
