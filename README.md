@@ -35,3 +35,7 @@ Dit is een demo applicatie geschikt voor trainingsdoeleinden.
 4. Maak de keuze voor e2e testing en kies voor continue. Cypress maakt wat nu automatisch wat bestanden aan in je project folder.
 5. Kies daarna voor Google Chrome als browser
 6. Maak een nieuwe spec en run het voorbeeld met https://example.cypress.io/
+
+## Bruno
+
+1.  [Download](https://www.usebruno.com) Bruno en installeer deze.
