@@ -9,7 +9,10 @@ Dit is een demo applicatie geschikt voor trainingsdoeleinden.
 ## Wat heb je nodig?
 
 1. Om Praegus Travels te installeren heb je een Java JRE nodig. Deze kun je [hier](https://www.java.com/nl/download/manual.jsp) downloaden. Vaak heb je deze al geinstalleerd en kan je deze stap dus overslaan.
-2. Clone deze repository. Mocht je geen GIT hebben kan je ook een zip downloaden. Ga hiervoor naar de repository en download via de groene knop de zip.
+2. Clone deze repository. Mocht je geen GIT hebben kan je ook een zip downloaden. Ga hiervoor naar de [repository](https://github.com/praegus/travels/en) download via de groene knop de zip.
+
+[<img src="download.png" width="300"/>](project.png)
+
 3. Download [hier](https://repo1.maven.org/maven2/nl/praegus/travels-app/0.0.3/travels-app-0.0.3.jar) de laatste versie van Praegus Travels
 4. Plaats het jar bestand in je project folder:
 
@@ -32,6 +35,3 @@ Dit is een demo applicatie geschikt voor trainingsdoeleinden.
 4. Maak de keuze voor e2e testing en kies voor continue. Cypress maakt wat nu automatisch wat bestanden aan in je project folder.
 5. Kies daarna voor Google Chrome als browser
 6. Maak een nieuwe spec en run het voorbeeld met https://example.cypress.io/
-
-## Bruno
-1. [Download](https://www.usebruno.com) Bruno en installeer deze.
