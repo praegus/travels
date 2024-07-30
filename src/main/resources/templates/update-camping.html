@@ -32,7 +32,7 @@
             </form>
             <br>
             <div class="row">
-                <form th:action="@{/campings/delete/{id}(id=${camping.id})}" th:object="${camping}" method="post">
+                <form th:action="@{/api/campings/delete/{id}(id=${camping.id})}" th:object="${camping}" method="post">
                     <!-- Hidden field to simulate DELETE request -->
                     <input type="hidden" name="_method" value="DELETE"/>
                     <input type="submit" class="btn fa-input" value="&#xf1f8;">
