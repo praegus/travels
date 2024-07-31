@@ -37,7 +37,7 @@ Probeer de onderstaande scenario's te automatiseren. Hou daarbij de cleancode pr
 
 ## Opdracht 3
 
-Draai de test een aantal keer achter elkaar. Wat valt je op? Is dit een goede test? Discusieer en implementeer een verbeterde versie
+Draai de test een aantal keer achter elkaar. Wat valt je op? Is dit een goede test? Discusieer en implementeer een verbeterde versie.
 
 ## Opdracht 4
 
