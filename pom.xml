@@ -9,7 +9,7 @@
     </parent>
     <groupId>nl.praegus</groupId>
     <artifactId>travels-app</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.9-SNAPSHOT</version>
     <name>travels</name>
     <description>Demo project for Spring Boot</description>
     <properties>
