@@ -47,9 +47,23 @@ We gaan nu beginnen met de API
 2. Download dit bestand als travels.json
 3. Open Bruno en importeer deze als OpenAPI V3 Spec
 4. Bekijk alle requesten die er zijn en probeer ze uit
+5. Probeer het scenario van opdracht 2 na te maken maar dan via de API.
+6. Draai deze test in Bruno.
+7. Bekijk via de frontend of de test echt geslaagd is.
 
 ## Opdracht 5
 
-1. Probeer het scenario van opdracht 2 na te maken maar dan via de API.
-2. Draai deze test in Bruno.
-3. Bekijk via de frontend of de test echt geslaagd is.
+1. Ga naar https://beta.cyber-dojo.org/creator/home
+2. Create a new practice. “closest to zero.”
+3. Kies voor Java 21, JUnit 5
+4. Draai de test en maak deze groen
+
+## Opdracht 6
+
+Hernoem nu de bestanden in dit project:
+
+Hiker.java > Camping.java
+HikerTest.java > CampingTest.java
+
+In deze repository staan deze files ook, plak de inhoud hiervan in je Cyber Dojo omgeving en run de testen.
+Er is een maximum van 5 sterren die je kunt toewijzen aan een camping. Implementeer dit in de Camping class en schrijf enkele unittesten om dit aan te tonen. Denk aan grenswaarden en equivalentieklassen.
