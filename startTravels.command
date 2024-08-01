@@ -1,1 +1,1 @@
-java -jar ./travels-app-0.0.10-SNAPSHOT.jar
+java -jar ./travels-app-0.0.10.jar
