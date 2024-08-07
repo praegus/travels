@@ -67,3 +67,21 @@ HikerTest.java > CampingTest.java
 
 In deze repository staan deze files ook, plak de inhoud hiervan in je Cyber Dojo omgeving en run de testen.
 Er is een maximum van 5 sterren die je kunt toewijzen aan een camping. Implementeer dit in de Camping class en schrijf enkele unittesten om dit aan te tonen. Denk aan grenswaarden en equivalentieklassen.
+
+## Kenter website
+
+
+```
+describe('template spec', () => {
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+  });
+  it('passes', () => {
+    cy.visit('https://www.kenter.nu');
+    cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click();
+  });
+});
+```
+
+
+
