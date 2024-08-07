@@ -79,8 +79,14 @@ describe('template spec', () => {
   it('passes', () => {
     cy.visit('https://www.kenter.nu');
     cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click();
+    cy.get(
+      'ul.footer-list a[href="https://www.kenter.nu/algemene-voorwaarden/"] span:nth-child(1)',
+    )
+      .contains('Onze voorwaarden')
+      .should('be.visible');
   });
 });
+
 ```
 
 
